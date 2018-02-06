@@ -4,6 +4,10 @@
 本代码基于YYModel，使用前请先引入YYModel
 
 
+效果：
+https://github.com/JarhomChen/JHAreaView/blob/master/2018-02-06%2010.50.09.gif
+
+
     #import "JHAreaView.h"
 
 
