@@ -18,6 +18,7 @@
 @property (strong, nonatomic) JHArea *area;
 
 @property (weak, nonatomic) IBOutlet UIButton *btn;
+@property (weak, nonatomic) IBOutlet UITextField *textfield;
 
 @end
 
@@ -29,8 +30,11 @@
     
 }
 - (IBAction)btnhandle:(id)sender {
+    
+    NSInteger level = [self.textfield.text integerValue];
+    
     __weak __typeof(self) weakSelf = self;
-    [JHAreaView showAreaViewWithTitle:@"收货地址" provinceId:self.province.regionCode cityId:self.city.regionCode areaId:self.area.regionCode level:2 selectBlock:^(JHArea *province, JHArea *city, JHArea *area) {
+    [JHAreaView showAreaViewWithTitle:@"收货地址" provinceId:self.province.regionCode cityId:self.city.regionCode areaId:self.area.regionCode level:level selectBlock:^(JHArea *province, JHArea *city, JHArea *area) {
         weakSelf.province = province;
         weakSelf.city = city;
         weakSelf.area = area;

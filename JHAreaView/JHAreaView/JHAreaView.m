@@ -144,11 +144,11 @@ static JHAreaView *areaView = nil;
 
 - (void)setupData {
     if (self.selectArea) {
-        [self.pageVC setViewControllers:@[self.listVC_2] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+        [self.pageVC setViewControllers:@[self.listVC_2] direction:0 animated:NO completion:nil];
         [self.segmentView setupAreaName:@[self.selectProvince.regionName,self.selectCity.regionName,self.selectArea.regionName]];
         [self.segmentView selectIndex:2];
     } else if (self.selectCity) {
-        [self.pageVC setViewControllers:@[self.listVC_1] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+        [self.pageVC setViewControllers:@[self.listVC_1] direction:0 animated:NO completion:nil];
         [self.segmentView setupAreaName:@[self.selectProvince.regionName,self.selectCity.regionName]];
         [self.segmentView selectIndex:1];
     } else if (self.selectProvince){
@@ -251,7 +251,7 @@ static JHAreaView *areaView = nil;
         [self.segmentView selectIndex:2];
 
         
-    } else if (vc == self.listVC_2 && self.level > 3) {
+    } else if (vc == self.listVC_2) {
         self.selectArea = area;
         
         

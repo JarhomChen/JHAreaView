@@ -28,15 +28,35 @@
                                     <action selector="btnhandle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3zF-tu-p3y"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ktw-S6-vhN">
+                                <rect key="frame" x="157.5" y="258" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="cgq-Np-PbT"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择级数（1-3）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCI-xS-6M6">
+                                <rect key="frame" x="122.5" y="229" width="129.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="nCI-xS-6M6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="799-JN-wox"/>
+                            <constraint firstItem="eVD-lA-nHo" firstAttribute="top" secondItem="Ktw-S6-vhN" secondAttribute="bottom" constant="30" id="DTx-kZ-iO3"/>
                             <constraint firstItem="eVD-lA-nHo" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ma2-Q5-xCC"/>
+                            <constraint firstItem="Ktw-S6-vhN" firstAttribute="top" secondItem="nCI-xS-6M6" secondAttribute="bottom" constant="8" id="YFS-pd-WOG"/>
                             <constraint firstItem="eVD-lA-nHo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="igo-1v-zDY"/>
+                            <constraint firstItem="Ktw-S6-vhN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="otk-Ua-IC9"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="btn" destination="eVD-lA-nHo" id="Y55-ye-EH3"/>
+                        <outlet property="textfield" destination="Ktw-S6-vhN" id="qmm-yc-fq5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
