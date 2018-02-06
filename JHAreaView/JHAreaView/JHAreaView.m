@@ -17,7 +17,7 @@
 #define JHTopHeight 60.f
 
 
-@interface JHAreaView()<UIPageViewControllerDelegate,UIPageViewControllerDataSource,JHAreaListVCDelegate,JHAreaSegmentViewDelegate>
+@interface JHAreaView()<UIPageViewControllerDelegate,UIPageViewControllerDataSource,JHAreaListVCDelegate,JHAreaSegmentViewDelegate,UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageVC;
 
@@ -117,6 +117,12 @@ static JHAreaView *areaView = nil;
 }
 
 - (void)setupSubViews {
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapOnAreaView:)];
+    tap.delegate = self;
+    [self addGestureRecognizer:tap];
+    
+    
     UIView *boardView = [[UIView alloc] initWithFrame:CGRectMake(0, JHScreenHeight, JHScreenWidth, JHBoardHeight)];
     boardView.backgroundColor = [UIColor whiteColor];
     [self addSubview:boardView];
@@ -156,6 +162,17 @@ static JHAreaView *areaView = nil;
     }
     
     
+}
+
+
+- (void)didTapOnAreaView:(UITapGestureRecognizer *)tap {
+    CGPoint p = [tap locationInView:self.boardView];
+    if (p.y < 0) {
+        if (self.didCancelSelect) self.didCancelSelect();
+        
+        [self hideAreaView];
+    }
+
 }
 
 #pragma mark - UIPageViewControllerDataSource <NSObject>
@@ -269,7 +286,21 @@ static JHAreaView *areaView = nil;
 }
 
 - (void)didTapClose {
+    
+    if (self.didCancelSelect) self.didCancelSelect();
+    
     [self hideAreaView];
+}
+
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    
+    if ([NSStringFromClass([touch.view class]) isEqualToString:@"UITableViewCellContentView"]) {
+        return NO;
+    }
+    return  YES;
 }
 
 
