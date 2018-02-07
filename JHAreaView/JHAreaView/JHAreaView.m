@@ -238,7 +238,7 @@ static JHAreaView *areaView = nil;
         self.selectCity = area;
         self.selectArea = nil;
         
-        if (self.level < 3) {
+        if (self.level < 3 || !self.arrayArea.count) {
             if (self.didSelectArea)
                 self.didSelectArea(self.selectProvince, self.selectCity, self.selectArea);
             
