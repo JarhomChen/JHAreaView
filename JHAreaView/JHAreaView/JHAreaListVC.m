@@ -39,18 +39,23 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.tableView reloadData];
-
     
-    if (self.selectArea) {
+    [self.tableView reloadData];
+    
+    if (self.selectArea && [self.areaList containsObject:self.selectArea]) {
         NSInteger index = [self.areaList indexOfObject:self.selectArea];
-        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]
-                              atScrollPosition:UITableViewScrollPositionMiddle
-                                      animated:YES];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index inSection:0]
+                                  atScrollPosition:UITableViewScrollPositionMiddle
+                                          animated:NO];
+        });
+        
     }
     
     
 }
+
 
 
 #pragma mark - Table view data source
